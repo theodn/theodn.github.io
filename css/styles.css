@@ -28,6 +28,11 @@ body{
     color: var(--text-color);
 }
 
+.scroll-lock{
+    height: 100%;
+    overflow-y: hidden;
+}
+
 header{
     width: 100%; height: 100vh;
     background-color: var(--card-color);
@@ -219,6 +224,7 @@ nav div button::after{
     right: 0; bottom: -35%;
     font-size: 0.75rem;
     opacity: 0;
+    color: var(--text-color);
 }
 nav div button:first-of-type::after{content: "Dark mode"; left: -7%;}
 nav div button:last-of-type::after{content: "Reduce motion"; left: -27%;}
@@ -305,6 +311,7 @@ nav.menu-active div button{
 }
 
 .home section{
+    background-color: var(--bg-color);
     padding: calc(4.2rem + 10vw) 10%;
 }
 
@@ -349,7 +356,6 @@ nav.menu-active div button{
     .proj-flex a div{
         opacity: 1;
         bottom: -5rem;
-        box-shadow: var(--shadow-values) var(--shadow-color);
     }
     .proj-flex a{
         box-shadow: var(--shadow-hover-v) var(--shadow-hover-c);
@@ -419,4 +425,39 @@ nav.menu-active div button{
     #bottom-row a:nth-of-type(2){
         height: calc(80vw * 0.75);
     }
+}
+
+html.dark *{
+    --text-color: white;
+    --bg-color: black;
+    --card-color: #1a1a1a;
+    --opague-color: rgba(255, 255, 255, 0.1);
+    --opague-hover: rgba(255, 255, 255, 0.35);
+    --shadow-color: rgba(255, 255, 255, 0.34);
+    --shadow-hover-c: rgba(255, 255, 255, 0.2);
+
+    --opague-bg: rgba(0, 0, 0, 0.5);
+    --bf-shadow-color: rgba(255, 255, 255, 0.5);
+    --bf-shadow-values: 0 0.1rem 0.42rem;
+}
+
+html.dark .invert{filter: invert(1);}
+html.dark #top-row a:first-of-type{background-image: url(../img/chi/cover_dark.jpg);}
+html.dark #top-row a:nth-of-type(2){background-image: url(../img/avocadoe/cover_dark.jpg);}
+html.dark #top-row a:last-of-type{background-image: url(../img/climateveganism/cover_dark.jpg);}
+html.dark nav div button:first-of-type{
+    box-shadow: 0 0 1.5rem white;
+    background-image: url(../img/icons/moon-stars-light.svg);
+}
+html.dark nav div button:last-of-type{background-image: url(../img/icons/tachometer-light.svg);}
+
+html.re-mo *{
+    --easing-curve: none;
+}
+html.re-mo nav div button:last-of-type{
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.43);
+}
+html.dark.re-mo nav div button:last-of-type{
+    box-shadow: 0 0 1.5rem white;
+    background-image: url(../img/icons/tachometer-light.svg);
 }
