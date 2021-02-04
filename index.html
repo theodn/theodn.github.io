@@ -5,44 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Theo Nguyen</title>
 	<link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Montserrat:300,400,500,600,700,800,900" rel="stylesheet">
-    
-    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icson-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-    <link rel="manifest" href="favicon/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">  
+    <link rel="stylesheet" href="fonts/objectsans.css">
 </head>
-
-<body class="fade-in-top">
-    
-    <div id="wrapper" data-tilt data-tilt-glare data-tilt-max-glare="0.1">
-        <img src="img/logo.svg">
-        <h5>It's cooking<br>with G̸̞͐͋̚i̷̛̱̣͐t̷̻̋͑</h5>
-        
-        <div id="button">
-            <a href="https://instagram.com/theondt">social</a>
-            <a href="http://www.design.sheridanc.on.ca/~bd19w488/2d/index.html">ysdn site</a>
+<body>
+    <nav class="tilt">
+        <a href="/"><img src="img/logo.svg"></a>
+        <button id="hamburger"></button>
+        <ul>
+            <a href="/about/"><li>About</li></a>
+            <a href="/#projects"><li>Work</li></a>
+            <a href="/play/"><li>Play</li></a>
+            <a href="/#contact"><li>Contact</li></a>
+        </ul>
+        <div>
+            <button id="dark-toggle"></button>
+            <button id="motion-toggle"></button>
         </div>
-        
-        <a href="https://matthew-brown.dev">da fam with da program</a>
-    </div>
-    
-    <script type="text/javascript" src="js/vanilla-tilt.js"></script>
-    
+    </nav>
+    <main class="home">
+        <header>
+            <h1>I'm Theo, <span class="break">another designer.</span></h1>
+            <a href="/#projects"><h3>see stuff</h3></a>
+        </header>
+        <section id="projects">
+            <h1 class="center">Projects</h1>
+            <h2 class="inline">Interactive</h2>
+            <p class="inline">Web development, UX/UI design, <span class="break">Brand identity</span></p>
+            <div class="proj-flex" id="top-row">
+                <a class="tilt" href="/projects/chi/"><div><p>chì pencils</p><p>2019</p></div></a>
+                <a class="tilt" href="/projects/barepower/"><div><p>avocadoe barePower</p><p>2019</p></div></a>
+                <a class="tilt" href="/projects/climate"><div><p>Climate Veganism</p><p>2020</p></div></a>
+            </div>
+            <h2 class="inline">Static</h2>
+            <p class="inline">Typography, Information design, <span class="break">Communication design</span></p>
+            <div class="proj-flex" id="bottom-row">
+                <a class="tilt" href="/projects/poetictype/"><div><p>Poetic type</p><p>2020</p></div></a>
+                <a class="tilt" href="/projects/infodes/"><div><p>Visualization</p><p>2020</p></div></a>
+                <a class="tilt" href="/projects/ddh/"><div><p>???</p><p>2019</p></div></a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <h1>Get in touch<br>about stuff</h1>
+        <a href="mailto:theodnguyen@gmail.com" target="_blank"><img src="img/icons/paper-plane.svg">theodnguyen@gmail.com</a>
+        <a href="https://instagram.com/theondt" target="_blank"><img src="img/icons/instagram.svg">theondt</a>
+        <a href="docs/resume_jan2021.pdf" target="_blank"><img src="img/icons/file-alt.svg">resume</a>
+        <p>Made without sleep and sunlight<br>© Theo Nguyen 2021</p>
+    </footer>
+    <script src="js/vanilla-tilt.js"></script>
+    <script src="js/scripts.js"></script>
 </body>
-
 </html>
-    
