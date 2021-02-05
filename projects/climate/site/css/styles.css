@@ -1,0 +1,1506 @@
+@charset "UTF-8";
+*{
+    box-sizing: border-box;
+    font-family: 'Object Sans', sans-serif;
+    font-weight: 400;
+    --accent-color: #D1FFF7;
+    --bg-color: #FFFFFF;
+    --text-color: #000000;
+    --shadow-color: rgba(135, 208, 195, 0.5);
+}
+
+.transition-fade{
+    transition-duration: 0.4s;
+    opacity: 1;
+    transform: translateY(0);
+}
+html.is-animating .transition-fade{
+    opacity: 0;
+    transform: translateY(1rem);
+}
+
+body{
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/*navbar*/
+nav{
+    pointer-events: none;
+    opacity: 1;
+    z-index: 3;
+    padding: 1rem 5%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center; justify-content: space-between;
+}
+nav * {
+    pointer-events: auto;
+}
+
+nav a, nav > button{
+    display: block;
+    height: calc(1rem + 1vh); width: calc(1rem + 1vh);
+    background-size: contain;
+    background-repeat: no-repeat; background-position: center;
+    transition: 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+nav a{
+    background-image: url(../img/redo-alt.svg);
+}
+nav a:hover{
+    transform: rotate(360deg);
+}
+
+nav > button{
+    z-index: 1;
+    background-image: url(../img/utensils.svg);
+}
+
+nav button{
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+nav button:focus{
+    outline: none;
+}
+
+/*settings panel*/
+nav div{
+    box-sizing: content-box;
+    position: absolute;
+    padding: 10vh 5vw 15vh 10vw;
+    right: 0; top: 0;
+    width: 35vh; height: 35vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    transition: 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+    transform: scale(0); transform-origin: top right;
+    border-radius: 0 0 0 100%;
+    background-color: var(--accent-color);
+    box-shadow: 0 0 1rem var(--shadow-color);
+}
+nav div button{
+    margin: 0%;
+    opacity: 0;
+    position: relative;
+    height: 8vh; width: 8vh;
+    background-color: rgba(0, 0, 0, 0.07);
+    background-size: 50% 100%;
+    background-repeat: no-repeat; background-position: center;
+    border-radius: 100%;
+    transition: 0.25s cubic-bezier(0.33, 1, 0.68, 1);
+}
+@media (hover: hover) and (pointer: fine){
+    nav div button:hover{
+        transition-delay: 0s!important;
+        transition-duration: 0.2s!important;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+}
+
+nav div button::before{
+    pointer-events: none;
+    position: absolute;
+    text-align: center;
+    font-size: calc(0.4rem + 1vh);
+    font-weight: 700;
+    width: 100%;
+    bottom: -75%;
+    left: 0;
+}
+nav div button:first-child{
+    background-image: url(../img/moon-stars.svg);
+}
+nav div button:first-child::before{
+    content: "Dark mode";
+}
+nav div button:last-child{
+    background-image: url(../img/contrast.svg);
+}
+nav div button:last-child::before{
+    content: "High Contrast";
+}
+/*styles when setting panel opens*/
+nav.settings > button{
+    transform: rotate(-90deg);
+    filter: invert(0)!important;
+}
+nav.settings div{
+    transform: scale(1);
+}
+nav.settings div button{
+    transition-delay: 0.25s;
+    transition-duration: 0.6s;
+    margin: 7%;
+    opacity: 1;
+}
+
+#next, #previous{
+    z-index: 2;
+    position: fixed;
+    margin: auto;
+    display: inline-block;
+    background-color: var(--bg-color);
+    width: 70vw; max-width: 15rem;
+    height: 35vw; max-height: 7.5rem;
+    animation: pulse 2.5s cubic-bezier(0.32, 0, 0.67, 0) alternate infinite;
+}
+#next::before, #previous::before{
+    position: absolute;
+    color: var(--text-color);
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-size: 0.65rem;
+    opacity: 0.7;
+    width: 70vw; max-width: 15rem;
+    text-align: center;
+}
+
+@supports (backdrop-filter: blur(0.75rem)) or (-webkit-backdrop-filter: blur(0.75rem)){
+    #next, #previous{
+        background-color: transparent;
+        -webkit-backdrop-filter: blur(0.75rem);
+        backdrop-filter: blur(0.75rem);
+    }
+}
+
+#next{
+    bottom: -4.5rem; right: 3%;
+    border-radius: 15rem 15rem 0 0;
+}
+#next::before{
+    content: "next";
+    top: 15%;
+}
+#previous{
+    top: -4.5rem; left: 0; right: 0;
+    border-radius: 0 0 15rem 15rem;
+}
+#previous::before{
+    content: "previous";
+    bottom: 15%;
+}
+
+/*hover bg*/
+.hover-bg{
+    cursor: pointer;
+    position: relative;
+}
+.hover-bg::before{
+    content: "";
+    z-index: -1;
+    position: absolute;
+    left: -40%; top: -40%;
+    height: 180%; width: 180%;
+    border-radius: 60vh;
+    background-color: transparent;
+    border: 0.1rem solid var(--accent-color);
+    transition: 0.42s cubic-bezier(0.33, 1, 0.68, 1);
+}
+.hover-bg::before{
+    animation: pulse 1.5s cubic-bezier(0.32, 0, 0.67, 0) alternate infinite;
+}
+
+@keyframes pulse{
+    from {
+        transform: scale(1);
+        box-shadow: inset 0 0 2rem var(--shadow-color);
+    }
+    to {
+        transform: scale(1.05);
+        box-shadow: inset 0 0 0.1rem var(--shadow-color);
+    }
+}
+
+@media (hover: hover) and (pointer: fine){
+    .hover-bg::before{
+        opacity: 0;
+    }
+    .hover-bg:hover::before{
+        opacity: 1;
+    }
+}
+
+/*header*/
+h1{
+    font-weight: 700;
+    margin: 10vh 20% 0 12%;
+}
+
+/*superscript text*/
+.super{
+    position: absolute;
+    display: inline-block;
+    font-weight: inherit;
+    transform-origin: 15% top;
+    transform: scale(0.5);
+    white-space: nowrap;
+}
+
+section{
+    margin: 3.5% 12% 0 12%;
+}
+
+/*landing*/
+.landing{
+    height: 100vh!important;
+    display: flex;
+    align-items: center;
+}
+/*hide restart button*/
+.landing nav a{
+    visibility: hidden;
+}
+.landing h1{
+    margin: 0;
+}
+.landing > a{
+    margin: 0 25% 0 12%;
+    text-decoration: none;
+    color: inherit;
+}
+.landing > a:hover{
+    text-decoration: underline;
+}
+.landing .hover-bg::before{
+    opacity: 1;
+    margin: auto;
+    position: fixed;
+    top: 0; bottom: 5%;
+    left: -3%;
+    width: 60vh; height: 60vh;
+}
+
+/*overview*/
+.overview section{
+    min-height: 65vh;
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.overview section span{
+    position: absolute;
+    margin: auto;
+    display: inline-block;
+    width: calc(5rem + 3vw);
+    height: calc(5rem + 3vw);
+    transition: 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+    animation: float 15s linear infinite;
+}
+.overview span.beef{
+    bottom: 30%;
+    left: 32%;
+}
+.overview span.pork{
+    animation-duration: 14s;
+    animation-direction: reverse;
+    bottom: 15%;
+    left: 45%;
+}
+.overview span.poultry{
+    animation-duration: 20s;
+    animation-delay: 0.5s;
+    bottom: 20%;
+    left: 60%;
+}
+.overview .hover-bg.active{
+    left: 40%!important;
+    bottom: 55%!important;
+}
+.overview .hover-bg.active::before{
+    opacity: 0;
+}
+.hover-bg.beef.inactive {
+    left: 5%!important;
+}
+.hover-bg.pork.inactive {
+    left: 10%!important;
+    bottom: 70%!important;
+}
+.hover-bg.poultry.inactive{
+    left: 0%!important;
+    bottom: 10%!important;
+}
+.overview span img{
+    width: inherit;
+}
+.overview span.pork img{
+    padding: 10%;
+    transform: rotate(45deg);
+}
+.overview span.poultry img{
+    padding: 15%;
+    transform: rotate(-75deg);
+}
+@keyframes float {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-0.75rem, 0.75rem);
+  }
+  40% {
+    transform: translate(-0.75rem, -0.75rem);
+  }
+  60% {
+    transform: translate(0.75rem, 0.75rem);
+  }
+  80% {
+    transform: translate(0.75rem, -0.75rem);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.overview-meat{
+    pointer-events: none;
+    position: absolute;
+    left: 60%; top: 0;
+    margin: 0 3% 0 0;
+    display: inline-block;
+}
+.overview-meat *{
+    transform-origin: top left;
+    transform: translateX(-1rem);
+    opacity: 0;
+    transition: 0.2s cubic-bezier(0.33, 1, 0.68, 1);
+}
+.overview-meat.active *{
+    transform: translateX(0);
+    opacity: 1;
+    transition-duration: 0.6s;
+}
+.overview-meat h2{
+    font-size: 1.5rem;
+    transition-delay: 0.2s;
+}
+.overview-meat div{
+    margin:  0 0 2rem 0;
+}
+.overview-meat div:first-of-type{
+    transition-delay: 0.3s;
+}
+.overview-meat div:nth-of-type(2){
+    transition-delay: 0.4s;
+}
+.overview-meat div:nth-of-type(3){
+    transition-delay: 0.5s;
+}
+.overview-meat h3{
+    margin: 0 0 0.5rem 0;
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 2rem;
+}
+.overview-meat p{
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+#plate{
+    z-index: -1;
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    margin: auto;
+    width: 90vw; max-width: 20rem;
+    height: 20vw; max-height: 3.5rem;
+    border: 0.4rem solid var(--text-color);
+    border-radius: 100%;
+    transform: rotate(7deg);
+}
+#plate::before{
+    position: absolute;
+    content: "";
+    width: 80%;
+    height: 30%;
+    border: 0.3rem solid var(--text-color);
+    border-radius: 100%;
+    left: 0; right: 0; top: 0; bottom: 0;
+    margin: auto;
+}
+
+/*history*/
+.history section{
+    position: relative;
+    min-height: 45vh;
+}
+
+@media only screen and (min-width: 675px){
+    .history section{
+        margin-bottom: 45vh;
+    }
+}
+
+.history section span{
+    margin: auto;
+    display: inline-block;
+    position: absolute;
+    width: calc(5rem + 2vw);
+    height: calc(5rem + 2vw);
+    transition: 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+    animation: float 15s linear infinite;
+}
+.history section span:first-of-type{
+    animation-duration: 17s;
+    left: calc(40% - 2.5rem - 1vw);
+    top: calc(50% - 5rem - 2vw);
+}
+.history section span:nth-of-type(2){
+    left: calc(45% + 2.5rem + 1vw);
+    top: calc(50% - 5rem - 2vw);
+}
+.history section span:nth-of-type(3){
+    animation-direction: reverse;
+    left: calc(40% - 2.5rem - 1vw);
+    top: calc(47.5% + 5rem + 2vw);
+}
+.history section span:nth-of-type(4){
+    animation-duration: 13s;
+    left: calc(45% + 2.5rem + 1vw);
+    top: calc(47.5% + 5rem + 2vw);
+}
+.history section span.inactive:first-of-type{
+    left: 7%;
+    top: 0;
+}
+.history section span.inactive:nth-of-type(2){
+    left: 32%;
+    top: 0;
+}
+.history section span.inactive:nth-of-type(3){
+    left: 57%;
+    top: 0;
+}
+.history section span.inactive:last-of-type{
+    left: 82%;
+    top: 0;
+}
+.history section span.active{
+    left: 25%;
+    top: 45%;
+}
+.history section span.active::before{
+    opacity: 0;
+}
+
+.history section img{
+    width: 100%;
+}
+
+.history section div{
+    pointer-events: none;
+    position: absolute;
+    top: 40%; left: 52%;
+    width: 100%;
+    max-width: 19rem;
+}
+.history section div *{
+    transition: 0.2s cubic-bezier(0.33, 1, 0.68, 1);
+    opacity: 0;
+    transform: translateX(-1rem);
+}
+.history section div.active *{
+    transition-delay: 0.3s;
+    transition-duration: 0.8s;
+    opacity: 1!important;
+    transform: translateX(0);
+}
+.history section h2{
+    margin: 0 0 1rem 0;
+}
+.history section p{
+    margin: 0 0 3rem 0;
+    transition-delay: 0.2s;
+    line-height: 1.5rem;
+}
+
+/*charts*/
+.charts section{
+    margin: 10% 12% 27vh 12%;
+    position: relative;
+    height: 50vh;
+}
+.charts section::before{
+    content: "amount of nutrient \A in each item, per 100g";
+    position: absolute;
+    right: 0; top: -6.5%;
+    white-space: pre;
+    text-align: right;
+    font-size: calc(0.4rem + 0.45vw);
+    opacity: 0.5;
+}
+
+/*dropdown*/
+.charts section ul{
+    z-index: 1;
+    position: relative;
+    top: -12.5%;
+    display: inline-block;
+    list-style: none;
+    margin: 0 0 0 0;
+    padding: 0;
+    width: 100%;
+    max-width: 15rem;
+}
+.charts section ul::before{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 20%;
+    opacity: 0;
+    background-color: var(--accent-color);
+    border-radius: 2rem;
+    box-shadow: 0 0 1rem var(--shadow-color);
+    transition: 0.45s cubic-bezier(0.33, 1, 0.68, 1);
+}
+.charts li{
+    pointer-events: none;
+    position: relative;
+    padding: 1.25rem 4rem 1.25rem 0;
+    border-radius: 2rem;
+    transition: 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+}
+.charts li:not(:first-of-type){
+    transform: translateY(-45%);
+    opacity: 0;
+}
+.charts section ul > span{
+    position: absolute;
+    top: 6.5%;
+    right: 60%;
+    display: inline-block;
+    width: 1.1rem; height: 1.1rem;
+    transition: 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+.charts .hover-bg::before{
+    top: -50%; left: -50%;
+}
+@media (hover: none), (pointer: coarse){
+    .charts .hover-bg::before{
+        opacity: 0;
+    }
+}
+.charts section ul img{
+    width: 100%;
+    height: auto;
+    transition: 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+    transform: rotate(0deg);
+}
+
+/*y axis*/
+.charts section > span{
+    position: absolute;
+    bottom: 0;
+    left: -5.5%;
+    height: 90%;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.charts span p{
+    text-align: right;
+    position: relative;
+    margin: 0;
+}
+.charts span p, .charts section > span:after, .charts section > span::before{
+    font-size: calc(0.5rem + 0.45vw);
+}
+.charts span p:after{
+    position: absolute;
+    right: 0; top: 100%;
+    content: "gram";
+    font-size: calc(0.4rem + 0.45vw);
+}
+.charts section > span::after{
+    content: "25";
+    position: absolute;
+    bottom: calc(50% - 0.5rem);
+}
+.charts section > span::before{
+    content: "50";
+    position: absolute;
+    top: calc(0% - 0.5rem);
+}
+
+/*swap out y axis and change animation order*/
+.charts section.calorie > span::before{
+    content: "1000"
+}
+.charts section.calorie > span::after{
+    content: "500";
+}
+.charts section.calorie span p::after{
+    content: "kcal";
+}
+.charts section.calorie li:not(:nth-of-type(2)){
+    opacity: 0;
+    transform: translateY(-45%);
+}
+.charts section.calorie li:nth-of-type(2){
+    opacity: 1;
+    transform: translateY(-100%);
+}
+.charts section.calorie li:first-of-type{
+    transform: translateY(55%);
+}
+.charts section.calorie ul > span{
+    right: 65%;
+}
+
+.charts section.iron > span::before{
+    content: "5";
+}
+.charts section.iron > span::after{
+    content: "2.5";
+}
+.charts section.iron span p::after{
+    content: "mg";
+}
+.charts section.iron li:not(:nth-of-type(3)){
+    opacity: 0;
+    transform: translateY(-45%);
+}
+.charts section.iron li:nth-of-type(3){
+    opacity: 1;
+    transform: translateY(-200%);
+}
+.charts section.iron li:first-of-type, .charts section.iron li:nth-of-type(2){
+    transform: translateY(55%);
+}
+.charts section.iron ul > span{
+    right: 75%;
+}
+
+.charts section.fats > span::before{
+    content: "60";
+}
+.charts section.fats > span::after{
+    content: "30";
+}
+.charts section.fats span p::after{
+    content: "gram";
+}
+.charts section.fats li:not(:nth-of-type(4)){
+    opacity: 0;
+    transform: translateY(-45%);
+}
+.charts section.fats li:nth-of-type(4){
+    opacity: 1;
+    transform: translateY(-300%);
+}
+.charts section.fats li:first-of-type, .charts section.fats li:nth-of-type(2), .charts section.fats li:nth-of-type(3){
+    transform: translateY(55%);
+}
+
+.charts section.ghg > span::before{
+    content: "50";
+}
+.charts section.ghg > span:after{
+    content: "25";
+}
+.charts section.ghg span p::after{
+    content: "kq \A CO2eq";
+    white-space: pre;
+}
+.charts section.ghg li:not(:nth-of-type(5)){
+    opacity: 0;
+    transform: translateY(-45%);
+}
+.charts section.ghg li:nth-of-type(5){
+    opacity: 1;
+    transform: translateY(-400%);
+}
+.charts sectionghg li:first-of-type, .charts section.ghg li:nth-of-type(2), .charts section.ghg li:nth-of-type(3), .charts section.ghg li:nth-of-type(4){
+    transform: translateY(55%);
+}
+.charts section.ghg ul > span{
+    right: 35%;
+}
+
+/*dropdown animation*/
+.charts section ul.dropdown::before{
+    opacity: 1;
+    height: 100%!important;
+    transition-duration: 0.4s;
+}
+.charts section ul.dropdown li{
+    pointer-events: auto;
+    cursor: pointer;
+    padding: 1.25rem 4rem 1.25rem 2rem;
+    transform: translateY(0);
+    opacity: 1!important;
+    transition-duration: 0.6s;
+}
+/*dropdown changes*/
+.charts section.calorie ul.dropdown li:not(:nth-of-type(2)){
+    transform: translateY(0)!important;
+}
+.charts section.calorie ul.dropdown li:first-of-type{
+    transform: translateY(100%)!important;
+}
+
+.charts section.iron ul.dropdown li:not(:nth-of-type(3)){
+    transform: translateY(0)!important;
+}
+.charts section.iron ul.dropdown li:first-of-type, .charts section.iron ul.dropdown li:nth-of-type(2){
+    transform: translateY(100%)!important;
+}
+.charts section.fats ul.dropdown li:not(:nth-of-type(4)){
+    transform: translateY(0)!important;
+}
+.charts section.fats ul.dropdown li:first-of-type, .charts section.fats ul.dropdown li:nth-of-type(2), .charts section.fats ul.dropdown li:nth-of-type(3){
+    transform: translateY(100%)!important;
+}
+.charts section.ghg ul.dropdown li:not(:nth-of-type(5)){
+    transform: translateY(0)!important;
+}
+.charts section.ghg ul.dropdown li:first-of-type, .charts section.ghg ul.dropdown li:nth-of-type(2), .charts section.ghg ul.dropdown li:nth-of-type(3), .charts section.ghg ul.dropdown li:nth-of-type(4){
+    transform: translateY(100%)!important;
+}
+
+@media (hover: hover) and (pointer: fine){
+    .charts ul.dropdown li:hover{
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+}
+.charts section ul.dropdown > span{
+    right: 15%!important;
+}
+.charts section ul.dropdown img{
+    transform: rotate(180deg);
+    filter: invert(0);
+}
+
+/*bars*/
+.charts section > div{
+    position: absolute;
+    bottom: 0;
+    height: 90%;
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.charts div div{
+    transition: 0.8s cubic-bezier(0.33, 1, 0.68, 1);
+    position: relative;
+    height: 100%;
+    width: 10%;
+    background-color: var(--accent-color);
+}
+.charts div div::before{
+    position: absolute;
+    top: -1.25rem; left: 0; right: 0;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    font-size: 0.8rem;
+}
+.charts div div::after{
+    position: absolute;
+    bottom: -1.75rem; left: 0; right: 0;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+}
+
+/*beef*/
+.charts div div:first-of-type{
+    height: calc(100% * 0.247 * 2);
+}
+.charts div div:first-of-type::before{
+    content: "24.7";
+}
+.charts div div:first-of-type::after{
+    content: "Beef";
+}
+.charts section.calorie div div:first-of-type{
+    height: calc(100% * 0.1477);
+}
+.charts section.calorie div div:first-of-type::before{
+    content: "147.7";
+}
+.charts section.iron div div:first-of-type{
+    height: calc(2.22 / 5 * 100%);
+}
+.charts section.iron div div:first-of-type::before{
+    content: "2.22";
+}
+.charts section.fats div div:first-of-type{
+    height: calc(4.72 / 60 * 100%);
+}
+.charts section.fats div div:first-of-type::before{
+    content: "4.72";
+}
+.charts section.ghg div div:first-of-type{
+    height: calc(49.89 / 50 * 100%);
+}
+.charts section.ghg div div:first-of-type::before{
+    content: "49.89";
+}
+
+/*pork*/
+.charts div div:nth-of-type(2){
+    height: calc(100% * 0.214 * 2);
+}
+.charts div div:nth-of-type(2)::before{
+    content: "21.4";
+}
+.charts div div:nth-of-type(2)::after{
+    content: "Pork";
+}
+.charts section.calorie div div:nth-of-type(2){
+    height: calc(100% * 0.274);
+}
+.charts section.calorie div div:nth-of-type(2)::before{
+    content: "274";
+}
+.charts section.iron div div:nth-of-type(2){
+    height: calc(1.54 / 5 * 100%);
+}
+.charts section.iron div div:nth-of-type(2)::before{
+    content: "1.54";
+}
+.charts section.fats div div:nth-of-type(2){
+    height: calc(19.5 / 60 * 100%);
+}
+.charts section.fats div div:nth-of-type(2)::before{
+    content: "19.5";
+}
+.charts section.ghg div div:nth-of-type(2){
+    height: calc(7.61 / 50 * 100%);
+}
+.charts section.ghg div div:nth-of-type(2)::before{
+    content: "7.61";
+}
+
+/*poultry*/
+.charts div div:nth-of-type(3){
+    height: calc(100% * 0.277 * 2);
+}
+.charts div div:nth-of-type(3)::before{
+    content: "27.7";
+}
+.charts div div:nth-of-type(3)::after{
+    content: "Poultry";
+}
+.charts section.calorie div div:nth-of-type(3){
+    height: calc(100% * 0.1807);
+}
+.charts section.calorie div div:nth-of-type(3)::before{
+    content: "180.7";
+}
+.charts section.iron div div:nth-of-type(3){
+    height: calc(0.99 / 5 * 100%);
+}
+.charts section.iron div div:nth-of-type(3)::before{
+    content: "0.99";
+}
+.charts section.fats div div:nth-of-type(3){
+    height: calc(6.93 / 60 * 100%);
+}
+.charts section.fats div div:nth-of-type(3)::before{
+    content: "6.93";
+}
+.charts section.ghg div div:nth-of-type(3){
+    height: calc(5.7 / 50 * 100%);
+}
+.charts section.ghg div div:nth-of-type(3)::before{
+    content: "5.7";
+}
+
+/*fish*/
+.charts div div:nth-of-type(4){
+    height: calc(100% * 0.213 * 2);
+}
+.charts div div:nth-of-type(4)::before{
+    content: "21.3";
+}
+.charts div div:nth-of-type(4)::after{
+    content: "Fish";
+}
+.charts section.calorie div div:nth-of-type(4){
+    height: calc(100% * 0.1417);
+}
+.charts section.calorie div div:nth-of-type(4)::before{
+    content: "141.7";
+}
+.charts section.iron div div:nth-of-type(4){
+    height: calc(0.88 / 5 * 100%);
+}
+.charts section.iron div div:nth-of-type(4)::before{
+    content: "0.88";
+}
+.charts section.fats div div:nth-of-type(4){
+    height: calc(5.6 / 60 * 100%);
+}
+.charts section.fats div div:nth-of-type(4)::before{
+    content: "5.6";
+}
+.charts section.ghg div div:nth-of-type(4){
+    height: calc(5.89 / 50 * 100%);
+}
+.charts section.ghg div div:nth-of-type(4)::before{
+    content: "5.98";
+}
+
+/*seitan*/
+.charts div div:nth-of-type(5){
+    height: calc(100% * 0.223 * 2);
+}
+.charts div div:nth-of-type(5)::before{
+    content: "22.3";
+}
+.charts div div:nth-of-type(5)::after{
+    content: "Seitan";
+}
+.charts section.calorie div div:nth-of-type(5){
+    height: calc(100% * 0.134);
+}
+.charts section.calorie div div:nth-of-type(5)::before{
+    content: "134";
+}
+.charts section.iron div div:nth-of-type(5){
+    height: calc(1.28 / 5 * 100%);
+}
+.charts section.iron div div:nth-of-type(5)::before{
+    content: "1.28";
+}
+.charts section.fats div div:nth-of-type(5){
+    height: calc(2.02 / 60 * 100%);
+}
+.charts section.fats div div:nth-of-type(5)::before{
+    content: "2.02";
+}
+.charts section.ghg div div:nth-of-type(5){
+    height: calc(1.29 / 50 * 100%);
+}
+.charts section.ghg div div:nth-of-type(5)::before{
+    content: "1.29";
+}
+
+/*tofu*/
+.charts div div:nth-of-type(6){
+    height: calc(100% * 0.1 * 2);
+}
+.charts div div:nth-of-type(6)::before{
+    content: "10";
+}
+.charts div div:nth-of-type(6)::after{
+    content: "Tofu";
+}
+.charts section.calorie div div:nth-of-type(6){
+    height: calc(100% * 0.0923);
+}
+.charts section.calorie div div:nth-of-type(6)::before{
+    content: "92.3";
+}
+.charts section.iron div div:nth-of-type(6){
+    height: calc(2.15 / 5 * 100%);
+}
+.charts section.iron div div:nth-of-type(6)::before{
+    content: "2.15";
+}
+.charts section.fats div div:nth-of-type(6){
+    height: calc(4.23 / 60 * 100%);
+}
+.charts section.fats div div:nth-of-type(6)::before{
+    content: "4.23";
+}
+.charts section.ghg div div:nth-of-type(6){
+    height: calc(1.98 / 50 * 100%);
+}
+.charts section.ghg div div:nth-of-type(6)::before{
+    content: "1.98";
+}
+
+/*peas*/
+.charts div div:nth-of-type(7){
+    height: calc(100% * 0.032 * 2);
+}
+.charts div div:nth-of-type(7)::before{
+    content: "3.2";
+}
+.charts div div:nth-of-type(7)::after{
+    content: "Peas";
+}
+.charts section.calorie div div:nth-of-type(7){
+    height: calc(100% * 0.054);
+}
+.charts section.calorie div div:nth-of-type(7)::before{
+    content: "54";
+}
+.charts section.iron div div:nth-of-type(7){
+    height: calc(0.83 / 5 * 100%);
+}
+.charts section.iron div div:nth-of-type(7)::before{
+    content: "0.83";
+}
+.charts section.fats div div:nth-of-type(7){
+    height: calc(0.2 / 60 * 100%);
+}
+.charts section.fats div div:nth-of-type(7)::before{
+    content: "0.2";
+}
+.charts section.ghg div div:nth-of-type(7){
+    height: calc(0.44 / 50 * 100%);
+}
+.charts section.ghg div div:nth-of-type(7)::before{
+    content: "0.44";
+}
+
+/*nuts*/
+.charts div div:nth-of-type(8){
+    height: calc(100% * 0.191 * 2);
+}
+.charts div div:nth-of-type(8)::before{
+    content: "19.1";
+}
+.charts div div:nth-of-type(8)::after{
+    content: "Nuts";
+}
+.charts section.calorie div div:nth-of-type(8){
+    height: calc(100% * 0.610);
+}
+.charts section.calorie div div:nth-of-type(8)::before{
+    content: "610";
+}
+.charts section.iron div div:nth-of-type(8){
+    height: calc(3.42 / 5 * 100%);
+}
+.charts section.iron div div:nth-of-type(8)::before{
+    content: "3.42";
+}
+.charts section.fats div div:nth-of-type(8){
+    height: calc(55.2 / 60 * 100%);
+}
+.charts section.fats div div:nth-of-type(8)::before{
+    content: "55.2";
+}
+.charts section.ghg div div:nth-of-type(8){
+    height: calc(0.26 / 50 * 100%);
+}
+.charts section.ghg div div:nth-of-type(8)::before{
+    content: "0.26";
+}
+
+/*stats*/
+.stats{
+    position: relative;
+    min-height: 75vh;
+    margin: 10vh 12% 0 12%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.stats > h1{
+    position: absolute;
+    margin: 0 25% 0 0;
+    top: 0; left: 0;
+    font-size: 2rem;
+}
+.stats > span{
+    transition:  0.6s cubic-bezier(0.33, 1, 0.68, 1);
+    z-index: 2;
+    display: inline-block;
+    width: calc(9vh + 5vw); height: calc(9vh + 5vw);
+    animation: float 20s linear infinite;
+    position: absolute;
+}
+@media (hover: none), (pointer: coarse){
+    .stats .hover-bg::before{
+        opacity: 0;
+    }
+}
+.stats > span::after{
+    position: absolute;
+    left: 0; right: 0;
+    bottom: -37%;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+    font-size: calc(1vh + 0.5vw);
+}
+.stats > span:first-of-type{
+    left: 5%;
+}
+.stats > span:first-of-type::after{
+    content: "Land";
+}
+.stats > span:nth-of-type(2){
+    left: 30%;
+    animation-direction: reverse;
+}
+.stats > span:nth-of-type(2)::after{
+    content: "Water";
+}
+.stats > span:nth-of-type(3){
+    left: 55%;
+    animation-duration: 15s;
+}
+.stats > span:nth-of-type(3)::after{
+    content: "Air";
+}
+.stats > span:last-of-type{
+    left: 77%;
+    animation-duration: 30s;
+    animation-direction: reverse;
+}
+.stats > span:last-of-type::after{
+    content: "Industries";
+}
+.stats > span img{
+    height: 100%;
+    width: 100%;
+}
+.stats .hover-bg.active{
+    top: 0;
+    left: 85%!important;
+    width: calc(4.5vh + 2.5vw); height: calc(4.5vh + 2.5vw);
+}
+.stats .hover-bg.active::before{
+    opacity: 1;
+}
+.stats .hover-bg.inactive{
+    left: 95%;
+    width: calc(4.5vh + 2.5vw); height: calc(4.5vh + 2.5vw);
+}
+.stats .hover-bg.inactive:first-of-type{
+    top: 25%;
+}
+.stats .hover-bg.inactive:nth-of-type(2){
+    top: 40%;
+}
+.stats .hover-bg.inactive:nth-of-type(3){
+    top: 60%;
+}
+.stats .hover-bg.inactive:last-of-type{
+    top: 80%;
+}
+
+.stats section{
+    margin: 0 0 7vh 0;
+    top: 0; left: 0;
+    z-index: -1;
+    height: 0!important;
+    overflow: hidden;
+    position: absolute;
+    width: auto; height: auto;
+    transform-origin: top;
+}
+.stats section *{
+    transition: 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+    opacity: 0;
+}
+.stats section.active{
+    background-color: var(--bg-color);
+    height: auto!important;
+    z-index: 1;
+}
+.stats section.active *{
+    opacity: 1;
+}
+.stats section.active h1{
+    transition-duration: 0s;
+}
+.stats section.active h2{
+    transition-delay: 0.1s;
+}
+.stats section.active h3{
+    transition-delay: 0.2s;
+}
+.stats section.active p{
+    transition-delay: 0.3s;
+}
+.stats section h1{
+    margin: 0;
+    font-weight: 400;
+    font-size: 2rem;
+    max-width: 80%;
+}
+.stats section h2{
+    margin: 3.5rem 0 1.5rem 0;
+    font-size: 1.5rem;
+}
+.stats section ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-flow: row wrap;
+}
+.stats section li{
+    min-width: 10%;
+    margin: 0 10% 1rem 0;
+    display: flex;
+    flex-flow: column nowrap;
+}
+.stats section li h3{
+    margin: 0 0 0.1rem 0;
+    font-size: 2rem;
+    font-weight: 700;
+}
+.stats section p{
+    margin: 0;
+}
+
+/*moral arguments*/
+.moral > h2{
+    margin: 1rem 25% 0 12%;
+    font-size: 0.9rem;
+}
+.moral section span{
+    margin: 30vh 0 50vh 0;
+    display: grid;
+    grid-template-columns: 0.4fr 0.6fr;
+    grid-gap: 1.5rem;
+}
+.moral section span:not(:last-of-type){
+    height: 125vh;
+}
+.moral span h2{
+    font-weight: 700;
+    margin: 0;
+}
+.moral span p{
+    margin: 0;
+    line-height: 1.5rem;
+}
+
+/*learn more*/
+.more section{
+    
+}
+.more section div{
+    margin: 0 0 5vh 0;
+    width: 100%;
+    padding-top: 56.25%;
+    position: relative;
+    overflow: hidden;
+}
+.more section div a{
+    color: var(--text-color);
+    z-index: -1;
+    left: 0; top: 0;
+    position: absolute;
+}
+.more iframe{
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    margin: auto;
+    width: 100%; height: 100%;
+}
+
+/*take action*/
+.action section p{
+    line-height: 1.5rem;
+    max-width: 900px;
+    margin: 4.5rem 0;
+}
+
+/*sources*/
+.sources section a{
+    display: block;
+    margin: 0 0 1.5rem 0;
+    text-decoration: none;
+    color: var(--text-color);
+}
+.sources section h2{
+    margin: 0 0 0.5rem 0;
+    line-height: 1.7rem;
+}
+.sources section h3{
+    margin: 0;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+footer{
+    background-color: rgba(137, 137, 137, 0.05);
+    padding: 5vh 12% 10vh 12%;
+    display: flex;
+    flex-flow: column nowrap;
+    color: var(--text-color);
+    font-size: 0.6rem;
+}
+
+footer h3{
+    margin: 0 0 0.25rem 0;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+footer p{
+    margin: 0 0 0.5rem 0;
+    text-transform: uppercase;
+}
+
+@media only screen and (max-width: 675px){
+    nav div{
+        padding: 10vh 0 15vh 20vw;
+        width: 100%;
+    }
+    
+    .landing .hover-bg::before{
+        left: -50vw;
+        width: 135vw;
+        height: 135vw;
+        display: block;
+    }
+    
+    #next{
+        left: 0; right: 0;
+    }
+
+    .overview section{
+        flex-flow: column;
+        margin: 5rem;
+    }
+    .overview .hover-bg{
+        margin: auto auto 2rem 12%;
+        align-self: flex-start;
+        position: static!important;
+    }
+    .overview .hover-bg::before{
+        opacity: 1;
+    }
+    .overview .hover-bg.active::before{
+        opacity: 0;
+    }
+    .overview-meat{
+        margin-bottom: 5rem;
+        position: static;
+    }
+    #plate{
+        visibility: hidden;
+    }
+    
+    .history section{
+        margin-top: 5rem;
+        flex-flow: column;
+    }
+    .history .hover-bg{
+        margin: auto auto 2rem 7%;
+        align-self: flex-start;
+        position: static!important;
+    }
+    .history .hover-bg::before{
+        opacity: 1;
+    }
+    .history .hover-bg.active::before{
+        opacity: 0;
+    }
+    .reason-text{
+        margin-bottom: 5rem;
+        position: static!important;
+    }
+    
+    .charts div div::after{
+        text-align: left;
+        bottom: -2.25rem;
+        transform: rotate(90deg);
+    }
+    
+    .stats > span{
+        position: fixed;
+    }
+    .stats > span.hover-bg:first-of-type{
+        left: 15%;
+        top: 55%;
+    }
+    .stats > span.hover-bg:nth-of-type(2){
+        left: 20%;
+        top: 74%;
+    }
+    .stats > span.hover-bg:nth-of-type(3){
+        left: 50%;
+        top: 62%;
+    }
+    .stats > span.hover-bg:last-of-type{
+        left: 60%;
+        top: 78%;
+    }
+    
+    .stats .hover-bg.active{
+        top: 17%!important;
+        left: 82%!important;
+    }
+    .stats .hover-bg.inactive{
+        left: 85%!important;
+    }
+    .stats .hover-bg.inactive:first-of-type{
+        top: 42%;
+    }
+    .stats .hover-bg.inactive:nth-of-type(2){
+        top: 56%;
+    }
+    .stats .hover-bg.inactive:nth-of-type(3){
+        top: 66%;
+    }
+    .stats .hover-bg.inactive:last-of-type{
+        top: 80%;
+    }
+
+    .moral section span{
+        margin: 65vh 0 25vh 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        align-content: flex-start;
+    }
+}
+
+/*dark mode setings*/
+body.dark, body.dark *{
+    --accent-color: #7dffc6;
+    --bg-color: #000000;
+    --text-color: #ffffff;
+    --shadow-color: #7dffc6;
+}
+/*set black images to white*/
+body.dark .dark-invert{
+    filter: invert(1);
+}
+body.dark nav div button:first-child{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+/*disable contrast button*/
+body.dark nav div button:last-child{
+    opacity: 0.4;
+    pointer-events: none;
+}
+body.dark main.charts ul.dropdown li{
+    color: black!important;
+}
+
+/*contrast mode settings*/
+body.contrast, body.contrast *{
+    --accent-color: #0C8764;
+    --shadow-color: rgba(51, 172, 138, 0.5)
+}
+/*set black images to white*/
+body.contrast nav div button, body.contrast nav.settings > button {
+    filter: invert(1)!important;
+}
+body.contrast nav div button:last-child{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+body.contrast main.charts ul.dropdown img{
+    filter: invert(1);
+}
+body.contrast main.charts ul.dropdown li{
+    color: white;
+}

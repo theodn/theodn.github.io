@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<html>
+    
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Avocadoe</title>
+	<link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Montserrat:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/f45822aa42.js" crossorigin="anonymous"></script>
+<!--    ScrollReveal library from scrollrevealjs.org-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+    
+<body>
+    
+    <div id="nav">   
+        <div id="navcontainer">
+            <div id="menu" onclick="menu()">
+                <div id="menu1"></div>
+                <div id="menu2"></div>
+            </div>
+            <img src="img/logo.svg" onclick="toTop()">
+            <a href="#overview">Overview</a>
+            <a href="#design">Design</a>
+            <a href="#specs">Specs</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contact">Contact</a>
+            <img src="img/cart.svg" id="cart" onclick="noCart()">
+        </div>
+        
+        <div id="dropdown">
+            <a href="#overview" onclick="dismissMenu()">Overview</a>
+            <a href="#design" onclick="dismissMenu()">Design</a>
+            <a href="#specs" onclick="dismissMenu()">Specs</a>
+            <a href="#pricing" onclick="dismissMenu()">Pricing</a>
+            <a href="#contact" onclick="dismissMenu()">Contact</a>
+        </div>   
+    </div>
+    
+    <div id="cart-menu"><div id="cartMan">Your cart is empty.</div></div>
+    
+    <div id="landing">
+        <h1>barePower</h1>
+        <h4>It exists.</h4>
+        <div><a href="#overview">Learn more<span><i class="fas fa-chevron-down"></i></span></a></div>
+        <div></div>
+    </div>
+    
+    <div id="overview">
+        <div id="overview-wrapper">
+        <div class="sectionhead">
+            <h4>Overview</h4>
+            <h1 class="lol">We couldn't<br>believe it<br>ourselves.</h1>
+        </div>
+        <p>We're actually releasing something that we announced and hyped up. We know, it surprised us too. But unlike some other company whose name also starts with the letter A, we know that we're capable of delivering on our promises. We won't just keep delaying the product only for it to be axed out of existence just because we realized halfway through developement that we're just not competent or even know what we're doing, no, that's simply not our principle.</p>
+        </div>
+        <p>We're actually releasing something that we announced and hyped up. We know, it surprised us too. But unlike some other company whose name also starts with the letter A, we know that we're capable of delivering on our promises. We won't just keep delaying the product only for it to be axed out of existence just because we realized halfway through developement that we're just not competent or even know what we're doing, no, that's simply not our principle.</p>
+    </div>
+    
+    <div id="design">
+        <div class="sectionhead de-head">
+            <h4>Design</h4>
+            <h1 class="lol">Leaving you<br>in charge.</h1>
+        </div>
+        <div></div>
+        <div id="de-grid">
+            <p><span>Place anywhere to charge. </span>You no longer need to watch out for where to correctly place your devices. Avocadoe barePower's technology ensures that charging can begin anywhere on the mat. Despite the design being physically and practically impossible, we somehow managed to stuff this puppy with 20 coils without it melting itself or its surroundings. However, we assure you this thing is only as much of a fire hazard as the pizza you forgot in the oven overnight.</p>
+            <div id="preview1"></div>
+            <div id="preview2"></div>
+            <p><span>Unapologetically plastic. </span>Forget the alumiuminium, forget the glass. We covered this thing with the same stuff your phone cases are made of, so you don't have to worry about dropping it you butterfingers you. You know how ungrateful you look when you go covering up our beautiful designs with $10 of pure thoughtless, made-in-china hunk of toy stuff. This is a culminiation of how we feel.</p>
+            <div id="preview3"></div>
+        </div>
+    </div> 
+    
+    <div id="specs">
+        <div class="sectionhead spc-head">
+            <h4>Specs</h4>
+            <h1 class="lol">More power. <br>Fewer wires.</h1>
+        </div>
+        <div id="spc-grid">
+            <h1>Size and Weight</h1>
+                <div>
+                    <h3><span>Height: </span>190.0 mm (7.48 inches)</h3>
+                    <h3><span>Width: </span>121.4 mm (4.77 inches)</h3>
+                    <h3><span>Depth: </span>6.9 mm (0.27 inches)</h3>
+                    <h3><span>Weight: </span>101 grams (3.56 ounces)</h3>
+                </div>
+            <h1>Connectivity</h1>
+                <div>
+                    <h3>USB-C Gen 4</h3>
+                </div>
+            <h1>Power Delivery</h1>
+                <div>
+                    <h3><span>aiPhone: </span>15W</h3>
+                    <h3><span>Avocadoe Watch: </span>5W</h3>
+                    <h3><span>barePods: </span>5W</h3>
+                </div>
+            <h1>Recharge Time</h1>
+                <div>
+                    <h3><span>aiPhone: </span>1.5 hours</h3>
+                    <h3><span>Avocadoe Watch: </span>1 hour</h3>
+                    <h3><span>barePods: </span>30 minutes</h3>
+                </div>
+            <h1>Environmental Requirements</h1>
+                <div>
+                    <h3><span>Operating ambient temperature: </span>0° to 35° C (32° to 95° F)</h3>
+                    <h3><span>Non‑operating temperature: </span>−20° to 45° C (−4° to 113° F)</h3>
+                    <h3><span>Relative humidity: </span>5% to 95% noncondensing</h3>
+                    <h3><span>Operating altitude: </span>tested up to 420 m (~1,400 feet)</h3>
+                </div>
+            <h1 class="no-border">In the Box</h1>
+                <div class="no-border">
+                    <h3>barePower Charging Mat</h3>
+                    <h3>USB-C Charge Cable</h3>
+                    <h3>18W USB-C Power Adapter</h3>
+                    <h3>Documentation</h3>
+                </div>
+            <img src="img/specs.svg">
+        </div>
+    </div>
+    
+    <div id="pricing">
+        <div class="sectionhead pr-head">
+            <h4>Pricing</h4>
+            <h1 class="lol">Make it drizzle.</h1>
+        </div>
+        
+        <div id="pr-grid">
+            <img src="img/pricing.svg">
+            <div>
+                <h2>Buy barePower</h2>
+                <h5>From $420. <br>Pre-order starts Feb 31, 2020.</h5>
+            </div>
+            <div>
+                <h3>Choose your finish.</h3>
+                <div id="picker">
+                    <div>
+                        <span></span>
+                        <h4>White</h4>
+                    </div>                    <div>
+                        <span></span>
+                        <h4>Ocean</h4>
+                    </div>
+                </div>
+            </div>
+            <button>Continue</button>
+        </div>
+    </div>
+    
+    <div id="contact">
+        <div class="sectionhead con-head">
+            <h4>Contact</h4>
+            <h1 class="lol">We're here <br>if you need us.</h1>
+        </div>
+        
+        <div id="con-grid">
+            <a href="tel:1-800-AVOCADO">
+                <i class="fas fa-phone"></i>
+                <h3>1-800-AVOCADO</h3>
+            </a>
+            <a href="mailto: support@avocadoe.com">
+                <i class="fas fa-envelope"></i>
+                <h3>help@avoca.doe</h3>
+            </a>
+            <a href="javascript:alert('Chat functionality will be enabled on launch');">
+                <i class="fas fa-comment"></i>
+                <h3>start a chat</h3>
+            </a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>*This is a parody. barePower is a non-existent product based on Apple's unreleased AirPower wireless charging mat. I'm just doing this to rub the fact that they canceled it in their faces. Bruh I was so hyped for that thing too. Come on Tim Apple there's gotta be something in the works my guy, we can't rock with no 3rd party stuff. I don't even know why I wrote this disclaimer, it was already legal as is.</p>
+        <h1>Copyright © No-One-Because-It's-Not-Registered. No rights reserved.</h1>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+    
+</html>

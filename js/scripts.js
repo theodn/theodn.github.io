@@ -12,17 +12,42 @@ getCookie = (x) =>{
     const parts = value.split(`; ${x}=`);
     if (parts.length === 2) return parts.pop().split(';').shift();
 };
+const tilt =  document.querySelectorAll('.tilt');
+const fullImg = document.querySelectorAll('.full-img');
+
+//initialize flickity
+if (document.querySelector('.main-carousel')){
+    var flkty = new Flickity('.main-carousel', {
+        cellSelector: '.carousel-cell',
+        wrapAround: true,
+        imagesLoaded: true,
+    });
+}
 
 //initialize vanilla tilt
-VanillaTilt.init(document.querySelectorAll('.tilt'), {
-    perspective: 420,
-    easing: "cubic-bezier(0.33, 1, 0.68, 1)"
-});
-VanillaTilt.init(document.querySelector('.tilt-nav'), {
-    perspective: 1000,
-    max: 11,
-    easing: "cubic-bezier(0.33, 1, 0.68, 1)"
-});
+initVanilla = () => {
+    VanillaTilt.init(tilt, {
+        perspective: 420,
+        easing: "cubic-bezier(0.33, 1, 0.68, 1)"
+    });
+    VanillaTilt.init(navBar, {
+        perspective: 1000,
+        max: 11,
+        easing: "cubic-bezier(0.33, 1, 0.68, 1)"
+    });
+    VanillaTilt.init(fullImg, {
+        perspective: 1000,
+        max: 11,
+        easing: "cubic-bezier(0.33, 1, 0.68, 1)"
+    });
+}
+initVanilla();
+//destroy vanilla tilt
+destrVanilla = () =>{
+    if (tilt[0]){tilt.forEach(tlit => {tlit.vanillaTilt.destroy();});}
+    navBar.vanillaTilt.destroy();
+    if (fullImg[0]){fullImg.forEach(fImg => {fImg.vanillaTilt.destroy();});}
+}
 
 //toggle menu and lock scroll
 toggleMenu = () => {
@@ -41,18 +66,10 @@ document.addEventListener('click', (event) => {
 //reduce motion toggle
 motionButton.addEventListener('click', () => {
     if (!document.documentElement.classList.contains('re-mo')){
-        document.querySelectorAll('.tilt').forEach(tlit => {
-            tlit.vanillaTilt.destroy();
-        });
-        document.querySelector('.tilt-nav').vanillaTilt.destroy();
+        destrVanilla();
         document.documentElement.classList.add('re-mo');
     } else {
-        VanillaTilt.init(document.querySelectorAll('.tilt'), {
-            perspective: 420, easing: "cubic-bezier(0.33, 1, 0.68, 1)"
-        });
-        VanillaTilt.init(document.querySelector('.tilt-nav'), {
-            perspective: 1000, max: 11, easing: "cubic-bezier(0.33, 1, 0.68, 1)"
-        });
+        initVanilla();
         document.documentElement.classList.remove('re-mo');
     }
 })
@@ -67,12 +84,30 @@ window.addEventListener('scroll', () => {
             navBar.style.top = '-200px';
         } else {
             oldScroll = newScroll;
-            navBar.style.top = '';
+            navBar.style.top = 'calc(1.1vw + 0.5rem)';
         }
-    }
+    } else {navBar.style.top = '';}
 })
 
-//dark mode settings
+//modal function
+modalCheck = (x) =>{
+    if (!x.classList.contains('modal')){
+        destrVanilla();
+        x.classList.add('modal');
+        document.body.classList.add('scroll-lock', 'modal');
+    } else {
+        initVanilla();
+        x.classList.remove('modal');
+        document.body.classList.remove('scroll-lock', 'modal');
+    }
+}
+document.querySelectorAll('.full-img').forEach(lilimg => {
+    lilimg.addEventListener('click', () => {
+        modalCheck(lilimg);
+    })
+})
+
+//dark mode function
 //check and set a cookie for the settings mode
 setMode = () => {
     //check if it is already in dark mode
