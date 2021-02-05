@@ -27,7 +27,7 @@ if (document.querySelector('.main-carousel')){
 //initialize vanilla tilt
 initVanilla = () => {
     VanillaTilt.init(tilt, {
-        perspective: 420,
+        perspective: 670,
         easing: "cubic-bezier(0.33, 1, 0.68, 1)"
     });
     VanillaTilt.init(navBar, {
@@ -92,11 +92,11 @@ window.addEventListener('scroll', () => {
 //modal function
 modalCheck = (x) =>{
     if (!x.classList.contains('modal')){
-        destrVanilla();
+        if (!document.documentElement.classList.contains('re-mo')){destrVanilla();}
         x.classList.add('modal');
         document.body.classList.add('scroll-lock', 'modal');
     } else {
-        initVanilla();
+        if (!document.documentElement.classList.contains('re-mo')){initVanilla();}
         x.classList.remove('modal');
         document.body.classList.remove('scroll-lock', 'modal');
     }

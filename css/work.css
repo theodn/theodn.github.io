@@ -2,7 +2,7 @@ h4{
     font-size: calc(0.9rem + 0.1vw);
     font-weight: 700;
 }
-p{
+p:not(footer p){
     line-height: calc(1.3rem + 0.2vw + 0.1vh);
 }
 
@@ -35,6 +35,7 @@ p{
     box-shadow: var(--shadow-values) var(--shadow-color);
     background-repeat: no-repeat; background-size: 50%; background-position: center;
 }
+.climate #process a{background-color: var(--card-color)}
 .work header a, .work header a::after, .climate #process a, .climate #process a::after{
     transition: 0.45s var(--easing-curve);
 }
@@ -42,7 +43,7 @@ p{
     box-shadow: var(--shadow-hover-v) var(--shadow-hover-c);
 }
 .sites header a:first-of-type{background-image: url(../img/icons/external-link-square.svg);}
-.sites header a:last-of-type{background-image: url(../img/icons/info-square.svg);}
+.sites header a:last-of-type, .print header a{background-image: url(../img/icons/info-square.svg);}
 .climate #process a{background-image: url(../img/icons/file-alt.svg)}
 
 .work header a::after{
@@ -53,7 +54,7 @@ p{
     text-align: center;
 }
 .sites header a:first-of-type::after{content: "view site"}
-.sites header a:last-of-type::after{content: "learn more"}
+.sites header a:last-of-type::after, .print header a::after{content: "learn more"}
 
 @media (hover: hover) and (pointer: fine){
     .work header a::after{
@@ -105,6 +106,10 @@ p{
     width: 100%;
 }
 
+.poetic .full-img{
+    margin-bottom: 2rem;
+}
+
 /*modal styles*/
 .full-img.modal{
     transform: none!important;
@@ -116,7 +121,7 @@ p{
     left: 0; right: 0; top: 0; bottom: 0; margin: auto;
     max-width: 92vw; max-height: 92vh; object-fit: contain;
     filter: drop-shadow(var(--bf-shadow-values) var(--bf-shadow-color));
-    animation: fade-in 0.7s var(--easing-curve);
+    animation: fade-in 0.6s var(--easing-curve);
 }
 @keyframes fade-in{
     0% {
@@ -138,7 +143,7 @@ body::before{
     background-color: var(--opague-bg);
     opacity: 0;
     pointer-events: none; user-select: none;
-    transition: 0.7s var(--easing-curve);
+    transition: 0.5s var(--easing-curve);
 }
 @supports (backdrop-filter: blur(42px)) or (-webkit-backdrop-filter: blur(42px)){
     body::before{
@@ -193,3 +198,5 @@ body.modal::before{opacity: 1};
 
 html.dark .sites header a:first-of-type{background-image: url(../img/icons/external-link-light.svg);}
 html.dark .sites header a:last-of-type{background-image: url(../img/icons/info-light.svg);}
+html.dark .climate #process a{background-image: url(/img/icons/file-light.svg);}
+html.dark .flickity-page-dots, html.dark .flickity-button{filter: invert(1);}
