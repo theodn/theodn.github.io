@@ -3,11 +3,13 @@
 <head>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Theo Nguyen - avocadoe</title>
+	<title>Theo Nguyen - Climate Veganism</title>
 	<link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/work.css">
     <link rel="stylesheet" href="/fonts/objectsans.css">
     <link rel="stylesheet" href="/css/flickity.min.css">
+    <script src="/js/flickity.pkgd.min.js"></script>
+    <script src="/js/swup.js"></script>
 </head>
 <body>
     <nav>
@@ -17,14 +19,14 @@
             <a href="/about/"><li>About</li></a>
             <a href="/#projects"><li>Work</li></a>
 <!--            <a href="/play/"><li>Play</li></a>-->
-            <a href="/#contact"><li>Contact</li></a>
+            <a href="#contact"><li>Contact</li></a>
         </ul>
         <div>
             <button id="dark-toggle"></button>
             <button id="motion-toggle"></button>
         </div>
     </nav>
-    <main class="work sites climate">
+    <main id="swup" class="work sites climate transition-fade">
         <header>
             <h3>Climate Veganism</h3>
             <h1>Informing and inprising<br>individual action</h1>
@@ -33,7 +35,7 @@
             </p>
             <div>
                 <a class="tilt" href="site/" target="_blank"></a>
-                <a class="tilt" href="/projects/climate/#process"></a>
+                <a class="tilt read-more"></a>
             </div>
             <div class="gradie"></div>
         </header>
@@ -57,14 +59,13 @@
             <p>Read the extensive secondary research,<br>data collection and design process in the doc.</p>
         </section>
     </main>
-    <footer>
+    <footer id="contact">
         <h1>Get in touch<br>about stuff</h1>
         <a href="mailto:theodnguyen@gmail.com" target="_blank"><img class="invert" src="/img/icons/paper-plane.svg">theodnguyen@gmail.com</a>
         <a href="https://instagram.com/theondt" target="_blank"><img class="invert" src="/img/icons/instagram.svg">theondt</a>
         <a href="/docs/resume_jan2021.pdf" target="_blank"><img class="invert" src="/img/icons/file-alt.svg">resume</a>
         <p>Made without sleep and sunlight<br>© Theo Nguyen 2021</p>
     </footer>
-    <script src="/js/flickity.pkgd.min.js"></script>
     <script src="/js/vanilla-tilt.js"></script>
     <script src="/js/rellax.min.js"></script>
     <script src="/js/scripts.js"></script>

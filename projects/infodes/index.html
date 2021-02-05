@@ -3,11 +3,13 @@
 <head>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Theo Nguyen - Poetic type</title>
+	<title>Theo Nguyen - Information Design</title>
 	<link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/work.css">
     <link rel="stylesheet" href="/fonts/objectsans.css">
     <link rel="stylesheet" href="/css/flickity.min.css">
+    <script src="/js/flickity.pkgd.min.js"></script>
+    <script src="/js/swup.js"></script>
 </head>
 <body>
     <nav>
@@ -17,14 +19,14 @@
             <a href="/about/"><li>About</li></a>
             <a href="/#projects"><li>Work</li></a>
 <!--            <a href="/play/"><li>Play</li></a>-->
-            <a href="/#contact"><li>Contact</li></a>
+            <a href="#contact"><li>Contact</li></a>
         </ul>
         <div>
             <button id="dark-toggle"></button>
             <button id="motion-toggle"></button>
         </div>
     </nav>
-    <main class="work print infodes">
+    <main id="swup" class="work print infodes transition-fade">
         <header>
             <h3>Data visualization</h3>
             <h1>Going beyond with infomation</h1>
@@ -32,7 +34,7 @@
                 Canada and Singapore could not be more different. That is why it was so interesting to seee so much overlap between how each of them prosper, in areas such as education, labour and overal wealth, despite the stark contrast in enviroments and cultures. One of two areas that I’m focusing on for my visualizations is education, the other being income. I went for the former feeling that my options would be more limited otherwise.
             </p>
             <div>
-                <a class="tilt" href="/projects/climate/#process"></a>
+                <a class="tilt read-more"></a>
             </div>
             <div class="gradie"></div>
         </header>
@@ -49,14 +51,13 @@
             <div class="full-img"><img src="/img/infodes/final.jpg"></div>
         </section>
     </main>
-    <footer>
+    <footer id="contact">
         <h1>Get in touch<br>about stuff</h1>
         <a href="mailto:theodnguyen@gmail.com" target="_blank"><img class="invert" src="/img/icons/paper-plane.svg">theodnguyen@gmail.com</a>
         <a href="https://instagram.com/theondt" target="_blank"><img class="invert" src="/img/icons/instagram.svg">theondt</a>
         <a href="/docs/resume_jan2021.pdf" target="_blank"><img class="invert" src="/img/icons/file-alt.svg">resume</a>
         <p>Made without sleep and sunlight<br>© Theo Nguyen 2021</p>
     </footer>
-    <script src="/js/flickity.pkgd.min.js"></script>
     <script src="/js/vanilla-tilt.js"></script>
     <script src="/js/rellax.min.js"></script>
     <script src="/js/scripts.js"></script>

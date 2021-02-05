@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Theo Nguyen</title>
 	<link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/work.css">
     <link rel="stylesheet" href="/fonts/objectsans.css">
     <link rel="stylesheet" href="/css/flickity.min.css">
+    <script src="/js/flickity.pkgd.min.js"></script>
+    <script src="/js/swup.js"></script>
 </head>
 <body>
     <nav>
@@ -14,19 +17,19 @@
         <button id="hamburger"></button>
         <ul>
             <a href="/about/"><li>About</li></a>
-            <a href="/#projects"><li>Work</li></a>
+            <a href="#projects"><li>Work</li></a>
 <!--            <a href="/play/"><li>Play</li></a>-->
-            <a href="/#contact"><li>Contact</li></a>
+            <a href="#contact"><li>Contact</li></a>
         </ul>
         <div>
             <button id="dark-toggle"></button>
             <button id="motion-toggle"></button>
         </div>
     </nav>
-    <main class="home">
+    <main id="swup" class="home transition-fade">
         <header>
-            <h1>I'm Theo, <span class="break">another designer.</span></h1>
-            <a href="#projects"><h3>see stuff</h3></a>
+            <h1 data-rellax-speed="2">I'm Theo,<br>another designer.</h1>
+            <a href="#projects" data-rellax-speed="-3"><h3>see stuff</h3></a>
             <div class="gradie"></div>
             <div class="gradie"></div>
             <div class="gradie"></div>
@@ -49,14 +52,13 @@
             </div>
         </section>
     </main>
-    <footer>
+    <footer id="contact">
         <h1>Get in touch<br>about stuff</h1>
         <a href="mailto:theodnguyen@gmail.com" target="_blank"><img class="invert" src="/img/icons/paper-plane.svg">theodnguyen@gmail.com</a>
         <a href="https://instagram.com/theondt" target="_blank"><img class="invert" src="/img/icons/instagram.svg">theondt</a>
         <a href="/docs/resume_jan2021.pdf" target="_blank"><img class="invert" src="/img/icons/file-alt.svg">resume</a>
         <p>Made without sleep and sunlight<br>© Theo Nguyen 2021</p>
     </footer>
-    <script src="/js/flickity.pkgd.min.js"></script>
     <script src="/js/vanilla-tilt.js"></script>
     <script src="/js/rellax.min.js"></script>
     <script src="/js/scripts.js"></script>

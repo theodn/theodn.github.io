@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 *{
-    scroll-behavior: smooth;
+/*    scroll-behavior: smooth;*/
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     font-family: 'Object Sans', sans-serif;
@@ -43,6 +43,7 @@ h1{
     font-size: calc(1.8rem + 1.2vw);
     margin: 0 0 calc(4rem + 4.2vw) 0;
 }
+.home h1:first-of-type{text-align: left}
 
 h2{
     font-weight: 700;
@@ -126,7 +127,7 @@ nav > *:not(#hamburger):not(a){
     /*logo*/
 nav > a{
     display: block;
-    width: calc(1rem + 55%); height: calc(1rem + 2vh + 0.75vw);
+    width: calc(1rem + 42%); height: calc(1rem + 2vh + 0.75vw);
     position: relative; left: -1%;
     transition: 1.2s var(--easing-curve);
 }
@@ -473,6 +474,32 @@ header > *:not(.gradie){
     100% {transform: translate(0)}
 }
 
+.about header{
+    padding: 10%;
+    background-color: var(--bg-color);
+}
+.about header img{
+    width: 40vw;
+}
+.about h1{
+    color: var(--text-color);
+    position: absolute;
+    right: 3%; top: 19%;
+    text-align: right;
+}
+.about p{
+    color: var(--text-color);
+    max-width: 27rem;
+    position: absolute;
+    right: 20%; top: 36%;
+    background-color: var(--bg-color)
+}
+.about a{
+    position: absolute;
+    left: 90%; top: 89%;
+}
+.about a::after{display: none;}
+
 @media only screen and (min-width: 700px){
     #top-row a{
         width: 80vw; height: calc(80vw * 1.35);
@@ -543,6 +570,9 @@ html.dark *{
     --bf-shadow-color: rgba(255, 255, 255, 0.5);
     --bf-shadow-values: 0 0.1rem 0.42rem;
 }
+html.dark body{
+    background-color: var(--bg-color);
+}
 
 html.dark .invert{filter: invert(1);}
 html.dark #top-row a:first-of-type{background-image: url(../img/chi/cover_dark.jpg);}
@@ -556,7 +586,7 @@ html.dark nav div button:last-of-type{background-image: url(../img/icons/tachome
 
 /*reduce motion settings*/
 html.re-mo *{
-    --easing-curve: none;
+    --easing-curve: linear;
 }
 html.re-mo nav div button:last-of-type{
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.43);
@@ -567,4 +597,12 @@ html.dark.re-mo nav div button:last-of-type{
 }
 html.re-mo .gradie{
     animation-play-state: paused!important;
+}
+
+.transition-fade{
+    transition: 0.7s var(--easing-curve);
+    opacity: 1;
+}
+html.is-animating .transition-fade{
+    opacity: 0;
 }
