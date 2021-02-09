@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 *{
-/*    scroll-behavior: smooth;*/
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     font-family: 'Object Sans', sans-serif;
@@ -31,6 +30,9 @@ body{
 .scroll-lock{
     height: 100%;
     overflow-y: hidden;
+}
+*.scroll-smooth{
+    scroll-behavior: smooth
 }
 
 header{
