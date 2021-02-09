@@ -14,6 +14,8 @@ getCookie = (x) =>{
     const parts = value.split(`; ${x}=`);
     if (parts.length === 2) return parts.pop().split(';').shift();
 };
+//debounce function
+function debounce(func, wait, immediate) {var timeout; return function() {var context = this, args = arguments; var later = function() {timeout = null; if (!immediate) func.apply(context, args);}; var callNow = immediate && !timeout; clearTimeout(timeout); timeout = setTimeout(later, wait); if (callNow) func.apply(context, args);};};
 
 //dark mode function
 //check and set a cookie for the settings mode
@@ -33,9 +35,11 @@ motionButton.addEventListener('click', () => {
     if (!document.documentElement.classList.contains('re-mo')){
         document.documentElement.classList.add('re-mo');
         destrVanilla();
+        destrRellax();
     } else {
         document.documentElement.classList.remove('re-mo');
         initVanilla();
+        startRellax();
     }
 })
 
@@ -71,18 +75,9 @@ window.addEventListener('scroll', () => {
     } else {navBar.style.top = '';}
 })
 
-//initiate vanilla tilt on navbar
-VanillaTilt.init(navBar, {
-    perspective: 1000,
-    max: 11,
-    easing: "cubic-bezier(0.33, 1, 0.68, 1)"
-});
-
 //assign button to scroll content
 scrollButtons = (a, b, c) => {
-    console.log('ran');
     if (a){
-        console.log('true');
         a.addEventListener('click', () => {
             b.scrollIntoView({
                 behavior: "smooth",
@@ -97,9 +92,17 @@ scrollButtons = (a, b, c) => {
 //nav contact button
 scrollButtons(navBar.querySelector('ul a:last-of-type'), document.querySelector('footer'), 1);
 
+//refresh rellax on window resize
+resizeRellax = debounce(() => {restartRellax();}, 200)
+window.addEventListener('resize', resizeRellax);
+
+//js swup can clean up
 init = () => {
     const tilt =  document.querySelectorAll('.tilt');
     const fullImg = document.querySelectorAll('.full-img');
+    const paRallax = document.querySelector('.rellax');
+    //initialize rellax
+    if (paRallax && !document.querySelector('.re-mo')){var rellax = new Rellax('.rellax', {center: true}); document.querySelector('main').classList.add('rellax-enabled');};
     
     //check if the page address contains projects section the scrolls to top
     if (!window.location.href.includes('#projects')){
@@ -108,16 +111,16 @@ init = () => {
         document.querySelector('#projects').scrollIntoView();
     }
     
-    //inititalize relax
-    if (document.querySelector('.about header > *')){
-        var rellax = new Rellax('.about header > *', {
-            center: true,
-        });
-    }
-    if (document.querySelector('.home header')){
-        var rellax = new Rellax('.home header > *:not(.gradie)', {
-            center: true,
-        });
+    //destroy rellax
+    destrRellax = () => {if(paRallax){rellax.destroy();}; document.querySelector('main').classList.remove('rellax-enabled');};
+    //restart rellax
+    restartRellax = () => {if(paRallax && !document.querySelector('.re-mo')){rellax.refresh();}};
+    //start rellax
+    startRellax = () => {
+        if (paRallax && !document.querySelector('.re-mo')){
+            var rellax = new Rellax('.rellax', {center: true});
+            document.querySelector('main').classList.add('rellax-enabled');
+        };
     }
 
     //initialize flickity
@@ -141,10 +144,15 @@ init = () => {
             if (fullImg){
                 VanillaTilt.init(fullImg, {
                     perspective: 1000,
-                    max: 11,
+                    max: 5,
                     easing: "cubic-bezier(0.33, 1, 0.68, 1)"
                 });
             }
+            VanillaTilt.init(navBar, {
+                perspective: 1000,
+                max: 15,
+                easing: "cubic-bezier(0.33, 1, 0.68, 1)"
+            });
         }
     }
     initVanilla();
@@ -153,6 +161,7 @@ init = () => {
     destrVanilla = () =>{
         if (tilt[0]){tilt.forEach(tlit => {tlit.vanillaTilt.destroy();});}
         if (fullImg[0]){fullImg.forEach(fImg => {fImg.vanillaTilt.destroy();});}
+        navBar.vanillaTilt.destroy();
     }
 
     //modal function
@@ -202,10 +211,10 @@ init = () => {
     };
     keepMode();
 }
-
 init();
 swup.on('contentReplaced', init);
 
+//stuff for swup to unload
 unload = () => {
     document.querySelector('nav').classList.remove('menu-active');
     document.body.classList.remove('scroll-lock');

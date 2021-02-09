@@ -497,8 +497,8 @@ header > *:not(.gradie){
     background-color: var(--bg-color)
 }
 .about a{
-    position: absolute;
-    left: 90%; top: 89%;
+    position: absolute!important;
+    left: 75%; top: 75%;
 }
 .about a::after{display: none;}
 
