@@ -218,7 +218,7 @@ swup.on('contentReplaced', init);
 //stuff for swup to unload
 unload = () => {
     window.scrollTo(0, 0);
-    destrRellax();
+    if (document.querySelector('.rellax-enabled')){destrRellax()};
     document.querySelector('nav').classList.remove('menu-active');
     document.body.classList.remove('scroll-lock');
     document.documentElement.classList.remove('scroll-smooth');
