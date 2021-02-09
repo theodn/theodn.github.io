@@ -77,9 +77,11 @@ a{
 h2.inline{margin: 0 4.2% 0 0}
 
 footer{
+    min-height: fit-content;
+    height: 75vh;
     z-index: 0;
     position: relative;
-    padding: 10% 7%;
+    padding: 12% 7% 0 7%;
     background-color: var(--card-color);
 }
 footer h1{
@@ -107,7 +109,7 @@ footer p{
     position: absolute;
     font-size: 0.5rem;
     text-align: right;
-    right: 7%; bottom: 14%;
+    right: 7%; bottom: 5%;
 }
 
 /*navigation*/
@@ -525,7 +527,7 @@ header > *:not(.gradie){
 @media only screen and (max-width: 700px){
     nav.menu-active{
         width: 100%; max-height: 100%;
-        left: 0; top: 0;
+        left: 0; top: 0!important;
     }
     nav.menu-active #hamburger{
         top: calc(-87% + 1rem);
@@ -556,6 +558,8 @@ header > *:not(.gradie){
     #bottom-row a:nth-of-type(2){
         height: calc(80vw * 0.75);
     }
+    
+    footer p{bottom: 2%;}
 }
 
 /*dark mode settings*/

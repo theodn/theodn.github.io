@@ -101,8 +101,6 @@ init = () => {
     const tilt =  document.querySelectorAll('.tilt');
     const fullImg = document.querySelectorAll('.full-img');
     const paRallax = document.querySelector('.rellax');
-    //initialize rellax
-    if (paRallax && !document.querySelector('.re-mo')){var rellax = new Rellax('.rellax', {center: true}); document.querySelector('main').classList.add('rellax-enabled');};
     
     //check if the page address contains projects section the scrolls to top
     if (!window.location.href.includes('#projects')){
@@ -189,7 +187,7 @@ init = () => {
     //about page button
     scrollButtons(document.querySelector('.about header a'), document.querySelector('#contact'), 0);
     
-    //nav work button, since it is not replaced by swup, workarounds are needed
+    //workarounds for nav work button, since it is not replaced by swup
     if (document.querySelector('.home')){
         workButton.setAttribute("href", "#projects");
         workButton.setAttribute("data-no-swup", "");
@@ -210,12 +208,17 @@ init = () => {
         }
     };
     keepMode();
+    
+    //initialize rellax
+    if (paRallax && !document.querySelector('.re-mo')){var rellax = new Rellax('.rellax', {center: true}); document.querySelector('main').classList.add('rellax-enabled');};
 }
 init();
 swup.on('contentReplaced', init);
 
 //stuff for swup to unload
 unload = () => {
+    window.scrollTo(0, 0);
+    destrRellax();
     document.querySelector('nav').classList.remove('menu-active');
     document.body.classList.remove('scroll-lock');
     document.documentElement.classList.remove('scroll-smooth');
