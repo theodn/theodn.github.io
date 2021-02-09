@@ -146,11 +146,13 @@ init = () => {
                     easing: "cubic-bezier(0.33, 1, 0.68, 1)"
                 });
             }
-            VanillaTilt.init(navBar, {
-                perspective: 1000,
-                max: 15,
-                easing: "cubic-bezier(0.33, 1, 0.68, 1)"
-            });
+            if (!window.navigator.vendor.includes('Apple')){
+                VanillaTilt.init(navBar, {
+                    perspective: 1000,
+                    max: 15,
+                    easing: "cubic-bezier(0.33, 1, 0.68, 1)"
+                });
+            }
         }
     }
     initVanilla();
@@ -159,7 +161,9 @@ init = () => {
     destrVanilla = () =>{
         if (tilt[0]){tilt.forEach(tlit => {tlit.vanillaTilt.destroy();});}
         if (fullImg[0]){fullImg.forEach(fImg => {fImg.vanillaTilt.destroy();});}
-        navBar.vanillaTilt.destroy();
+        if (!window.navigator.vendor.includes('Apple')){
+            navBar.vanillaTilt.destroy();
+        }
     }
 
     //modal function
