@@ -484,19 +484,25 @@ header > *:not(.gradie){
     background-color: var(--bg-color);
 }
 .about header img{
-    width: 40vw;
+    width: 35vw;
+    border-radius: var(--corner-radius);
 }
 .about h1{
     color: var(--text-color);
     position: absolute;
     right: 3%; top: 19%;
     text-align: right;
+    padding: 2% 2%;
+    border-radius: var(--corner-radius);
+    background-color: var(--bg-color)
 }
 .about p{
     color: var(--text-color);
-    max-width: 27rem;
+    max-width: 30rem;
+    padding: 2% 2%;
     position: absolute;
     right: 20%; top: 36%;
+    border-radius: var(--corner-radius);
     background-color: var(--bg-color)
 }
 .about a{
