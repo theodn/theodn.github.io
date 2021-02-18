@@ -12,7 +12,7 @@ h4{
 }
 
 .work header{
-    padding: 0 10%;
+    padding: 0 var(--side-padding);
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -69,7 +69,7 @@ h4{
 
 #process{
     background-color: var(--bg-color);
-    padding: calc(3rem + 5vw) 10%;
+    padding: calc(3rem + 5vw) var(--side-padding);
 }
 #process section{
     margin: 0 0 calc(5vh + 3rem) 0;
@@ -194,6 +194,7 @@ body.modal::before{opacity: 1; pointer-events: auto; user-select: auto;}
         margin: 2.5rem 0 0 0;
     }
     .full-img{margin: 0 0 2rem 0}
+    .full-img.modal img{max-width: 100%; max-height: 100%;}
     @media (pointer: coarse), (hover: none){
         .carousel-cell{
             height: 40vh;
@@ -204,7 +205,7 @@ body.modal::before{opacity: 1; pointer-events: auto; user-select: auto;}
     }
     .work header{
         justify-content: flex-end;
-        padding: 27vh 10% 10vh 10%;
+        padding: 27vh var(--side-padding) 10vh var(--side-padding);
         min-height: 100vh;
         height: auto;
     }

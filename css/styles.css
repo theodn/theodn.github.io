@@ -5,6 +5,7 @@
     box-sizing: border-box;
     font-family: 'Object Sans', sans-serif;
     
+    --side-padding: 15vw;
     --text-color: #000000;
     --bg-color: white;
     --card-color: #f3f4f7;
@@ -81,7 +82,7 @@ footer{
     height: 75vh;
     z-index: 0;
     position: relative;
-    padding: 12% 7% 0 7%;
+    padding: 12% calc(var(--side-padding) / 2) 0 calc(var(--side-padding) / 2);
     background-color: var(--card-color);
 }
 footer h1{
@@ -109,7 +110,7 @@ footer p{
     position: absolute;
     font-size: 0.5rem;
     text-align: right;
-    right: 7%; bottom: 5%;
+    right: var(--side-padding); bottom: 5%;
 }
 
 /*navigation*/
@@ -320,7 +321,7 @@ nav.menu-active div button{
 
 .home section{
     background-color: var(--bg-color);
-    padding: calc(4.2rem + 10vw) 10%;
+    padding: calc(4.2rem + 10vw) var(--side-padding);
 }
 
 .proj-flex{
@@ -506,25 +507,28 @@ header > *:not(.gradie){
 
 @media only screen and (min-width: 700px){
     #top-row a{
-        width: 80vw; height: calc(80vw * 1.35);
-        max-width: 26.67vw; max-height: calc(26.67vw * 1.35);
+        width: calc(100vw - (var(--side-padding) * 2)); height: calc((100vw - (var(--side-padding) * 2)) * 1.35);
+        max-width: calc((100vw - (var(--side-padding) * 2)) / 3); max-height: calc(((100vw - (var(--side-padding) * 2)) / 3) * 1.35);
     }
     #top-row a:first-of-type{margin-right: 5%;}
     #top-row a:last-of-type{margin-left: 5%;}
     
     #bottom-row a{
-        width: 80vw; max-width: 26.67vw;
+        width: calc(100vw - (var(--side-padding) * 2)); max-width: calc((100vw - (var(--side-padding) * 2)) / 3);
     }
     #bottom-row a:first-of-type, #bottom-row a:last-of-type{
-        height: calc(80vw * 0.55); max-height: calc(26.67vw * 0.55)
+        height: calc((100vw - (var(--side-padding) * 2)) * 0.55); max-height: calc(((100vw - (var(--side-padding) * 2)) / 3) * 0.55)
     }
     #bottom-row a:nth-of-type(2){
-        height: calc(80vw * 0.5); max-height: calc(26.67vw * 0.65);
+        height: calc((100vw - (var(--side-padding) * 2)) * 0.5); max-height: calc(((100vw - (var(--side-padding) * 2)) / 3) * 0.65);
     }
     #bottom-row a:first-of-type{margin-right: 5%;}
     #bottom-row a:last-of-type{margin-left: 5%;}
 }
 @media only screen and (max-width: 700px){
+    *{
+        --side-padding: 7vw;
+    }
     nav.menu-active{
         width: 100%; max-height: 100%;
         left: 0; top: 0!important;
@@ -550,15 +554,16 @@ header > *:not(.gradie){
         margin-bottom: calc(6rem + 5vh);
     }
     #top-row a{
-        width: 80vw; height: calc(80vw * 1.44);
+        width: calc(100vw - (var(--side-padding) * 2)); height: calc((100vw - (var(--side-padding) * 2)) * 1.44);
     }
      #bottom-row a:first-of-type, #bottom-row a:last-of-type{
-        height: calc(80vw * 0.6);
+        height: calc((100vw - (var(--side-padding) * 2)) * 0.6);
     }
     #bottom-row a:nth-of-type(2){
-        height: calc(80vw * 0.75);
+        height: calc((100vw - (var(--side-padding) * 2)) * 0.75);
     }
     
+    footer {padding: 12% var(--side-padding) 0 var(--side-padding)}
     footer p{bottom: 2%;}
 }
 
