@@ -35,11 +35,9 @@ motionButton.addEventListener('click', () => {
     if (!document.documentElement.classList.contains('re-mo')){
         document.documentElement.classList.add('re-mo');
         destrVanilla();
-        destrRellax();
     } else {
         document.documentElement.classList.remove('re-mo');
         initVanilla();
-        startRellax();
     }
 })
 
@@ -92,33 +90,16 @@ scrollButtons = (a, b, c) => {
 //nav contact button
 scrollButtons(navBar.querySelector('ul a:last-of-type'), document.querySelector('footer'), 1);
 
-//refresh rellax on window resize
-resizeRellax = debounce(() => {restartRellax();}, 200)
-window.addEventListener('resize', resizeRellax);
-
 //js swup can clean up
 init = () => {
     const tilt =  document.querySelectorAll('.tilt');
     const fullImg = document.querySelectorAll('.full-img');
-    const paRallax = document.querySelector('.rellax');
     
     //check if the page address contains projects section the scrolls to top
     if (!window.location.href.includes('#projects')){
         window.scrollTo(0, 0);
     } else {
         document.querySelector('#projects').scrollIntoView();
-    }
-    
-    //destroy rellax
-    destrRellax = () => {if(paRallax){rellax.destroy();}; document.querySelector('main').classList.remove('rellax-enabled');};
-    //restart rellax
-    restartRellax = () => {if(paRallax && !document.querySelector('.re-mo')){rellax.refresh();}};
-    //start rellax
-    startRellax = () => {
-        if (paRallax && !document.querySelector('.re-mo')){
-            var rellax = new Rellax('.rellax', {center: true});
-            document.querySelector('main').classList.add('rellax-enabled');
-        };
     }
 
     //initialize flickity
@@ -212,17 +193,12 @@ init = () => {
         }
     };
     keepMode();
-    
-    //initialize rellax
-    if (paRallax && !document.querySelector('.re-mo')){var rellax = new Rellax('.rellax', {center: true}); document.querySelector('main').classList.add('rellax-enabled');};
 }
 init();
 swup.on('contentReplaced', init);
 
 //stuff for swup to unload
 unload = () => {
-    window.scrollTo(0, 0);
-    if (document.querySelector('.rellax-enabled')){destrRellax()};
     document.querySelector('nav').classList.remove('menu-active');
     document.body.classList.remove('scroll-lock');
     document.documentElement.classList.remove('scroll-smooth');
