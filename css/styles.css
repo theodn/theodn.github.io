@@ -114,6 +114,43 @@ footer p{
     right: var(--side-padding); bottom: 5%;
 }
 
+#loading{
+    z-index: 0;
+    width: calc(5rem + 1vw); height: calc(5rem + 1vw);
+    border-radius: 100%;
+    background-color: aqua;
+    position: fixed;
+    left: 0; top: 0; right: 0; bottom: 0; margin: auto;
+    animation: glow 4.2s linear infinite alternate;
+    animation-play-state: paused;
+    opacity: 0; user-select: none; pointer-events: none;
+}
+@keyframes glow{
+    0%{
+        filter: blur(1rem);
+        background-color: #575DFF;
+    }
+    25%{
+        filter: blur(2.5rem);
+        background-color: #FF6969;
+    }
+    50%{
+        filter: blur(3rem);
+        background-color: #FC58FF;
+    }
+    75%{
+        filter: blur(1.5rem);
+        background-color: #7EFFEF;
+    }
+    100%{
+        filter: blur(2rem);
+        background-color: rgba(159, 126, 255);
+    }
+}
+html.is-animating #loading{
+    opacity: 1!important; z-index: 10!important; animation-play-state: running;
+}
+
 /*navigation*/
 nav{
     z-index: 2;
