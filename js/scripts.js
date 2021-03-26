@@ -88,7 +88,7 @@ scrollButtons = (a, b, c) => {
     }
 }
 //nav contact button
-scrollButtons(navBar.querySelector('ul a:last-of-type'), document.querySelector('footer'), 1);
+scrollButtons(navBar.querySelector('ul a:nth-of-type(3)'), document.querySelector('footer'), 1);
 
 //js swup can clean up
 init = () => {
