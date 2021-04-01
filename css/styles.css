@@ -301,7 +301,7 @@ nav.menu-active > a{
     width: 3.3rem; height: 3.3rem;
 }
 nav.menu-active > a::after{
-    transition-delay: 0.5s;
+    transition-delay: 0.25s;
     transition-duration: 0.7s;
     opacity: 1;
     top: 7%;
