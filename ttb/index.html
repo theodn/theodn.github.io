@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Travel Bookings</title>
+    <!-- font imports from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- font imports from Google Fonts -->
+    <!-- css styles for timeline script -->
+    <link rel="stylesheet" href="./css/timeline.min.css">
+    <!-- css styles for timeline script -->
+    <!-- default styles -->
+    <link rel="stylesheet" href="./css/main.css">
+    <!-- default styles -->
+</head>
+<body>
+    <!-- navigation component -->
+    <nav class="header">
+        <div>
+            <img src="./img/logo.svg">
+            <img src="./img/workmark.svg"> 
+        </div>
+        <button>Menu</button>
+        <ul>
+            <li><a class="heading-xsmall" href="#">Home</a></li>
+            <li><a class="heading-xsmall" href="#">Timeline</a></li>
+            <li><a class="heading-xsmall" href="#">Tours</a></li>
+            <li><a class="heading-xsmall" href="#">How it works</a></li>
+            <li><a class="heading-xsmall" href="#">The science</a></li>
+            <li><a class="heading-xsmall" href="#">Forum</a></li>
+        </ul>
+    </nav>
+    <!-- navigation component -->
+    <main>
+        <!-- timeline component -->
+        <section class="section-timeline">
+            <div class="timeline-container">
+                <div class="timeline js-timeline">
+                    <div data-time="-3000">
+                        <div class="tour-card horizontal">
+                            <img src="./img/image-01.jpg">
+                            <div>
+                                <h3 class="heading-small">The Impossible Construction of Stonehenge</h3>
+                                <div class="heading-xsmall">
+                                    <p>3000 BC</p>
+                                    <p>Wiltshire, England<br>
+                                        <span class="body-small">51°10′44″N 1°49′34″W</span>  
+                                    </p>
+                                </div>
+                                <div>
+                                    <h4 class="mouse-type">Art</h4>
+                                    <div>
+                                        <img src="./img/icons/star.svg">
+                                        <img src="./img/icons/star.svg">
+                                        <img src="./img/icons/star.svg">
+                                        <img src="./img/icons/star.svg">
+                                        <img src="./img/icons/star-unrated.svg">
+                                    </div>
+                                </div>
+                                <a href="#" class="pill-button light">View tour</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-time="80">
+                        <div class="tour-card horizontal">
+                            <img src="./img/image-03.jpg">
+                            <div>
+                                <h3 class="heading-small">The Colosseum<br>—Gladiator Battles</h3>
+                                <div class="heading-xsmall">
+                                    <p>80 AD</p>
+                                    <p>Rome, Italy<br>
+                                        <span class="body-small">41°53′25″N 12°29′32″E</span>  
+                                    </p>
+                                </div>
+                                <div>
+                                    <h4 class="mouse-type">Entertainment</h4>
+                                    <div>
+                                        <img src="./img/icons/star.svg">
+                                        <img src="./img/icons/star.svg">
+                                        <img src="./img/icons/star.svg">
+                                        <img src="./img/icons/star.svg">
+                                        <img src="./img/icons/star.svg">
+                                    </div>
+                                </div>
+                                <a href="#" class="pill-button light">View tour</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-time="1372">
+                        <div class="tour-card horizontal">
+                            <img src="./img/image-02.jpg">
+                            <div>
+                                <h3 class="heading-small">The Non-leaning Tower of Pisa</h3>
+                                <div class="heading-xsmall">
+                                    <p>1372 AD</p>
+                                    <p>Pisa, Italy<br>
+                                        <span class="body-small">43°43′23″N 10°23′47″E</span>  
+                                    </p>
+                                </div>
+                                <div>
+                                    <h4 class="mouse-type">Adventure</h4>
+                                    <div>
+                                        <img src="./img/icons/star.svg">
+                                        <img src="./img/icons/star.svg">
+                                        <img src="./img/icons/star.svg">
+                                        <img src="./img/icons/star-unrated.svg">
+                                        <img src="./img/icons/star-unrated.svg">
+                                    </div>
+                                </div>
+                                <a href="#" class="pill-button light">View tour</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-time="1886">
+                        <div class="tour-card horizontal">
+                            <img src="./img/image-04.jpg">
+                            <div>
+                                <h3 class="heading-small">The Gifting of The Statue of Libery</h3>
+                                <div class="heading-xsmall">
+                                    <p>OCT 28, 1886 AD</p>
+                                    <p>Liberty Island, NYC<br>
+                                        <span class="body-small">40°41′21″N 74°2′40″W</span>  
+                                    </p>
+                                </div>
+                                <div>
+                                    <h4 class="mouse-type">Political</h4>
+                                    <div>
+                                        <img src="./img/icons/star.svg">
+                                        <img src="./img/icons/star.svg">
+                                        <img src="./img/icons/star.svg">
+                                        <img src="./img/icons/star.svg">
+                                        <img src="./img/icons/star-unrated.svg">
+                                    </div>
+                                </div>
+                                <a href="#" class="pill-button light">View tour</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- timeline component -->
+        <!-- booking and card component -->
+        <section class="section-booking">
+            <div class="container-default">
+                <h1 class="heading-medium">Book Time Travel</h1>
+                <!-- booking form component -->
+                <form class="landing-form">
+                    <div class="form-top">
+                        <div class="radio-group">
+                            <div class="radio-button">
+                                <input type="radio" id="one-way" name="trip_type" value="One Way" checked>
+                                <label for="one-way">One Way</label>
+                                <span aria-hidden="true"></span>
+                                <div aria-hidden="true"></div>
+                            </div>
+                            <div class="radio-button">
+                                <input type="radio" id="round-trip" name="trip_type" value="Round trip">
+                                <label for="round-trip">Round trip</label>
+                                <span aria-hidden="true"></span>
+                                <div aria-hidden="true"></div>
+                            </div>
+                            <div class="radio-button">
+                                <input type="radio" id="multi-stop" name="trip_type" value="Multi-stop">
+                                <label for="multi-stop">Multi-stop</label>
+                                <span aria-hidden="true"></span>
+                                <div aria-hidden="true"></div>
+                            </div>
+                            <div class="radio-separator"></div>
+                            <div class="radio-button">
+                                <input type="radio" id="shared-tour" name="trip_type" value="Shared tour">
+                                <label for="shared-tour">Shared tour</label>
+                                <span aria-hidden="true"></span>
+                                <div aria-hidden="true"></div>
+                            </div>
+                        </div>
+                        <div class="text-button">
+                            <img src="./img/icons/travellers.svg">
+                            <input type="number" id="travellers" name="travellers" min="1">
+                            <label for="travellers">Travellers</label>
+                        </div>
+                    </div>
+                    <div class="form-middle">
+                        <div>
+                            <label class="mouse-type" for="where-from">From</label>
+                            <input class="input-field" type="text" id="where-from" name="where-from" placeholder="From where">
+                            <input class="input-field" type="datetime-local" id="when-from" name="when-from">
+                        </div>
+                        <div class="swap-button">
+                            <img src="./img/icons/swap_horiz.svg" alt="swap">
+                        </div>
+                        <div>
+                            <label class="mouse-type" for="where-to">To</label>
+                            <input class="input-field" type="text" id="where-to" name="where-to" placeholder="To where">
+                            <input class="input-field" type="datetime-local" id="when-to" name="when-to">
+                        </div>
+                    </div>
+                    <div class="form-bottom">
+                        <div class="text-button">
+                            <img src="./img/icons/promo.svg">
+                            <input type="text" id="promo-code" name="promo-code">
+                            <label for="promo-code">Add promo code</label>
+                        </div>
+                        <input class="pill-button" type="submit" value="Book trip">
+                    </div>
+                </form>
+                <!-- booking form component -->
+                <h2 class="heading-medium">Find Great Tours</h2>
+                <div class="tour-controls">
+                    <input class="input-field search" type="text" id="tour-search" name="tour-search" placeholder="Search tours">
+                    <div class="text-button">
+                        <img src="./img/icons/sort.svg">
+                        <select class="heading-xsmall" name="tour-sort" id="tour-sort">
+                            <option value="past-to-future">Past to future</option>
+                            <option value="past-to-future">Future to past</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="tour-grid">
+                    <div class="tour-card">
+                        <img src="./img/image-01.jpg">
+                        <div>
+                            <h3 class="heading-small">The Impossible Construction of Stonehenge</h3>
+                            <div class="heading-xsmall">
+                                <p>3000 BC</p>
+                                <p>Wiltshire, England<br>
+                                    <span class="body-small">51°10′44″N 1°49′34″W</span>  
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="mouse-type">Art</h4>
+                                <div>
+                                    <img src="./img/icons/star.svg">
+                                    <img src="./img/icons/star.svg">
+                                    <img src="./img/icons/star.svg">
+                                    <img src="./img/icons/star.svg">
+                                    <img src="./img/icons/star-unrated.svg">
+                                </div>
+                            </div>
+                            <a href="#" class="pill-button light">View tour</a>
+                        </div>
+                    </div>
+                    <div class="tour-card">
+                        <img src="./img/image-03.jpg">
+                        <div>
+                            <h3 class="heading-small">The Colosseum<br>—Gladiator Battles</h3>
+                            <div class="heading-xsmall">
+                                <p>80 AD</p>
+                                <p>Rome, Italy<br>
+                                    <span class="body-small">41°53′25″N 12°29′32″E</span>  
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="mouse-type">Entertainment</h4>
+                                <div>
+                                    <img src="./img/icons/star.svg">
+                                    <img src="./img/icons/star.svg">
+                                    <img src="./img/icons/star.svg">
+                                    <img src="./img/icons/star.svg">
+                                    <img src="./img/icons/star.svg">
+                                </div>
+                            </div>
+                            <a href="#" class="pill-button light">View tour</a>
+                        </div>
+                    </div>
+                    <div class="tour-card">
+                        <img src="./img/image-02.jpg">
+                        <div>
+                            <h3 class="heading-small">The Non-leaning Tower of Pisa</h3>
+                            <div class="heading-xsmall">
+                                <p>1372 AD</p>
+                                <p>Pisa, Italy<br>
+                                    <span class="body-small">43°43′23″N 10°23′47″E</span>  
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="mouse-type">Adventure</h4>
+                                <div>
+                                    <img src="./img/icons/star.svg">
+                                    <img src="./img/icons/star.svg">
+                                    <img src="./img/icons/star.svg">
+                                    <img src="./img/icons/star-unrated.svg">
+                                    <img src="./img/icons/star-unrated.svg">
+                                </div>
+                            </div>
+                            <a href="#" class="pill-button light">View tour</a>
+                        </div>
+                    </div>
+                    <div class="tour-card">
+                        <img src="./img/image-04.jpg">
+                        <div>
+                            <h3 class="heading-small">The Gifting of The Statue of Libery</h3>
+                            <div class="heading-xsmall">
+                                <p>OCT 28, 1886 AD</p>
+                                <p>Liberty Island, NYC<br>
+                                    <span class="body-small">40°41′21″N 74°2′40″W</span>  
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="mouse-type">Political</h4>
+                                <div>
+                                    <img src="./img/icons/star.svg">
+                                    <img src="./img/icons/star.svg">
+                                    <img src="./img/icons/star.svg">
+                                    <img src="./img/icons/star.svg">
+                                    <img src="./img/icons/star-unrated.svg">
+                                </div>
+                            </div>
+                            <a href="#" class="pill-button light">View tour</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- booking and card component -->  
+    </main>
+    <!-- footer component -->
+    <footer>
+        <div>
+            <img src="./img/logo.svg">
+            <img src="./img/workmark.svg"> 
+        </div>
+        <ul>
+            <li><a class="heading-xsmall" href="#">Featured Tours</a></li>
+            <li><a class="heading-xsmall" href="#">Timeline</a></li>
+            <li><a class="heading-xsmall" href="#">Tours</a></li>
+            <li><a class="heading-xsmall" href="#">How it works</a></li>
+            <li><a class="heading-xsmall" href="#">The science</a></li>
+            <li><a class="heading-xsmall" href="#">Forum</a></li>
+            <li><a class="heading-xsmall" href="#">Privacy</a></li>
+            <li><a class="heading-xsmall" href="#">Feedback</a></li>
+        </ul>
+        <div>
+            <p>© 2022 TimeTravelBookings.com</p>
+            <div>
+                <a href="#"><img src="./img/icons/icons8-youtube.svg" alt=""></a>
+                <a href="#"><img src="./img/icons/icons8-facebook.svg" alt=""></a>
+                <a href="#"><img src="./img/icons/icons8-twitter.svg" alt=""></a>
+            </div>
+        </div>
+    </footer>
+    <!-- jquery for the script -->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>\
+    <!-- jquery for the script -->
+    <!-- timeline component script -->
+    <script type="text/javascript" src="./js/timeline.min.js"></script>
+    <!-- timeline component script -->
+    <script>
+        $('.js-timeline').Timeline();
+
+        document.querySelector('.header button').addEventListener('click', ()=>{
+            document.querySelector('.header').classList.toggle('active');
+        })
+    </script>
+</body>
